@@ -685,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="File Reactor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -716,15 +716,15 @@
                                     <rect key="frame" x="1" y="0.0" width="697" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sAS-aN-THO" viewBased="YES" id="0rO-oG-K7d">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sAS-aN-THO" viewBased="YES" id="0rO-oG-K7d">
                                             <rect key="frame" x="0.0" y="0.0" width="697" height="234"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="Luh-pj-MeH">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <tableColumn width="531" minWidth="40" maxWidth="1000" id="Luh-pj-MeH">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Filename">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -736,12 +736,12 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="mRh-xh-bVx">
-                                                            <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                        <tableCellView identifier="CellIdentifierName" id="mRh-xh-bVx">
+                                                            <rect key="frame" x="1" y="1" width="531" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHZ-aY-nMH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="531" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="aef-Bt-KmL">
                                                                         <font key="font" metaFont="system"/>
@@ -756,8 +756,8 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="575" minWidth="40" maxWidth="1000" id="xc7-CP-2rc">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <tableColumn width="124" minWidth="40" maxWidth="1000" id="xc7-CP-2rc">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Size">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -769,12 +769,12 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="JBl-9r-lRT">
-                                                            <rect key="frame" x="120" y="1" width="575" height="17"/>
+                                                        <tableCellView identifier="CellIdentifierSize" id="JBl-9r-lRT">
+                                                            <rect key="frame" x="535" y="1" width="124" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbi-Nt-XJh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="575" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="124" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="7jD-ml-9UK">
                                                                         <font key="font" metaFont="system"/>
@@ -809,26 +809,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-Xu-RD4">
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-Xu-RD4">
                                 <rect key="frame" x="20" y="19" width="699" height="20"/>
                             </progressIndicator>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-fJ-G86">
-                                <rect key="frame" x="266" y="401" width="209" height="25"/>
-                                <popUpButtonCell key="cell" type="push" title="throw them overboard, lads!" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ldy-PQ-IAw" id="FfY-hh-TVb">
+                                <rect key="frame" x="314" y="401" width="113" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="&lt;operation&gt;" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ldy-PQ-IAw" id="FfY-hh-TVb">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="mvH-bI-UUR">
                                         <items>
-                                            <menuItem title="throw them overboard, lads!" state="on" id="Ldy-PQ-IAw"/>
+                                            <menuItem title="&lt;operation&gt;" state="on" id="Ldy-PQ-IAw"/>
                                             <menuItem title="Item 2" id="BCK-O4-Wt0"/>
                                             <menuItem title="Item 3" id="EdP-bo-Km9"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="updateOperationAction:" target="XfG-lQ-9wD" id="waa-ir-5y0"/>
+                                </connections>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Mw-Lcb">
-                                <rect key="frame" x="487" y="37" width="232" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="a fifteen men on a deadmen's chest..." id="TTR-vS-N3L">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Mw-Lcb">
+                                <rect key="frame" x="612" y="37" width="107" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="&lt;progress label&gt;" id="TTR-vS-N3L">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -843,11 +846,14 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O7k-0X-00D">
-                                <rect key="frame" x="279" y="76" width="182" height="32"/>
-                                <buttonCell key="cell" type="push" title="Throw them overboard!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aT5-Dg-y3p">
+                                <rect key="frame" x="291" y="76" width="158" height="32"/>
+                                <buttonCell key="cell" type="push" title="&lt;operation button&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aT5-Dg-y3p">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="performOperation:" target="XfG-lQ-9wD" id="q1S-Jo-0DA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -870,6 +876,13 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CM0-Vx-jBI" secondAttribute="trailing" constant="20" id="zdK-KG-LZF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="operationPopupButton" destination="2yc-fJ-G86" id="wdd-aQ-gkr"/>
+                        <outlet property="performOperationButton" destination="O7k-0X-00D" id="K8s-oT-u1n"/>
+                        <outlet property="progressIndicator" destination="EdB-Xu-RD4" id="U3h-GE-KFC"/>
+                        <outlet property="progressLabel" destination="Gqq-Mw-Lcb" id="wAL-8Z-iCE"/>
+                        <outlet property="tableView" destination="0rO-oG-K7d" id="PWS-47-cwR"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

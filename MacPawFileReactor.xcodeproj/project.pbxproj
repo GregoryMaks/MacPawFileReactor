@@ -12,6 +12,9 @@
 		932199EC23AE9D910057F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932199EB23AE9D910057F779 /* Assets.xcassets */; };
 		932199EF23AE9D910057F779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932199ED23AE9D910057F779 /* Main.storyboard */; };
 		932199FB23AE9D910057F779 /* MacPawFileReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932199FA23AE9D910057F779 /* MacPawFileReactorTests.swift */; };
+		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
+		93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0523B13CBA0062AF61 /* Operation.swift */; };
+		93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 		932199F623AE9D910057F779 /* MacPawFileReactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPawFileReactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		932199FA23AE9D910057F779 /* MacPawFileReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPawFileReactorTests.swift; sourceTree = "<group>"; };
 		932199FC23AE9D910057F779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		933B620123B15884009DFA61 /* FileListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListAdapter.swift; sourceTree = "<group>"; };
+		93F6EF0523B13CBA0062AF61 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+ViewExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,7 @@
 		932199E623AE9D8F0057F779 /* MacPawFileReactor */ = {
 			isa = PBXGroup;
 			children = (
-				93219A0523B123AE0057F779 /* UI */,
-				932199E723AE9D8F0057F779 /* AppDelegate.swift */,
+				93F6EF0723B13DE10062AF61 /* Sources */,
 				932199EB23AE9D910057F779 /* Assets.xcassets */,
 				932199ED23AE9D910057F779 /* Main.storyboard */,
 				932199F023AE9D910057F779 /* Info.plist */,
@@ -99,8 +104,28 @@
 			isa = PBXGroup;
 			children = (
 				932199E923AE9D8F0057F779 /* ViewController.swift */,
+				93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */,
+				933B620123B15884009DFA61 /* FileListAdapter.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		93F6EF0723B13DE10062AF61 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				93F6EF0823B13DF50062AF61 /* Model */,
+				93219A0523B123AE0057F779 /* UI */,
+				932199E723AE9D8F0057F779 /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		93F6EF0823B13DF50062AF61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93F6EF0523B13CBA0062AF61 /* Operation.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,8 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */,
 				932199EA23AE9D8F0057F779 /* ViewController.swift in Sources */,
 				932199E823AE9D8F0057F779 /* AppDelegate.swift in Sources */,
+				93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */,
+				933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
