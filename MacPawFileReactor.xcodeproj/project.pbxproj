@@ -76,8 +76,8 @@
 		932199E623AE9D8F0057F779 /* MacPawFileReactor */ = {
 			isa = PBXGroup;
 			children = (
+				93219A0523B123AE0057F779 /* UI */,
 				932199E723AE9D8F0057F779 /* AppDelegate.swift */,
-				932199E923AE9D8F0057F779 /* ViewController.swift */,
 				932199EB23AE9D910057F779 /* Assets.xcassets */,
 				932199ED23AE9D910057F779 /* Main.storyboard */,
 				932199F023AE9D910057F779 /* Info.plist */,
@@ -93,6 +93,14 @@
 				932199FC23AE9D910057F779 /* Info.plist */,
 			);
 			path = MacPawFileReactorTests;
+			sourceTree = "<group>";
+		};
+		93219A0523B123AE0057F779 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				932199E923AE9D8F0057F779 /* ViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
