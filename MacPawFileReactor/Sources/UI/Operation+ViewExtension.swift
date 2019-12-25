@@ -13,7 +13,7 @@ extension Operation {
     var description: String {
         let texts = [Operation.remove: "throw them overboard, lads! (delete)",
                      Operation.duplicate: "make me twice as much, goddamit! (duplicate)",
-                     Operation.calculateHashSum: "count the hash-doubloons, hearties! (count hash sum)"]
+                     Operation.calculateHashSum: "count the doubloons, hearties! (count hash sum)"]
         
         return texts[self]!
     }
