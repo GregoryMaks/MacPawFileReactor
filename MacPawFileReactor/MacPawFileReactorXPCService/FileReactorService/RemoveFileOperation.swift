@@ -20,6 +20,8 @@ class RemoveFileOperation: Operation {
     override func main() {
         do {
             try FileManager.default.removeItem(atPath: path)
+            // Adding some random delay to simulate long running process (file removal is fast)
+            Thread.sleep(forTimeInterval: Double.random(in: 0.0...3.0))
             result = true
         }
         catch {

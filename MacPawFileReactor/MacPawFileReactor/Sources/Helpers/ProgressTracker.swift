@@ -28,6 +28,14 @@ class ProgressTracker {
         self.totalOperationCount = totalOperationCount
     }
     
+    public func updateCompletedOperations(to operationsCompleted: UInt) {
+        syncQueue.async {
+            var completedOperations = max(operationsCompleted, self.operationsCompleted)
+            self.operationsCompleted = min(operationsCompleted, self.totalOperationCount)
+            self.notifyProgressChanged()
+        }
+    }
+    
     public func incrementCompletedOperations(by increment: UInt) {
         syncQueue.async {
             self.operationsCompleted = min(self.operationsCompleted + increment, self.totalOperationCount)

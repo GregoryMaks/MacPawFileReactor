@@ -65,8 +65,13 @@ extension ReactorViewModel {
     }
     
     public func performCurrentOperation() {
+        guard files.count > 0 else {
+            userResultShouldShow?(.noItemsToProcess)
+            return
+        }
+        
         processingStatus = .running
-        processingProgress = 0.5
+        processingProgress = 0
         
         switch currentOperation {
         case .remove:
@@ -123,8 +128,7 @@ extension ReactorViewModel {
     }
     
     private func removeSelectedFiles() {
-        // TODO: track progress
-        _ = fileReactorService.removeFiles(atURLs: files) { [weak self] result in
+        let progressTracker = fileReactorService.removeFiles(atURLs: files) { [weak self] result in
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 self.processingStatus = .idle
@@ -139,6 +143,10 @@ extension ReactorViewModel {
                     }
                 )
             }
+        }
+        
+        progressTracker.progressDidChange = { [weak self] fractionCompleted in
+            self?.processingProgress = fractionCompleted
         }
     }
     

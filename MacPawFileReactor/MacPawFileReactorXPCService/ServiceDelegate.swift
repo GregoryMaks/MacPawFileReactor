@@ -12,8 +12,9 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
     
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         newConnection.exportedInterface = NSXPCInterface(with: XPCFileReactorServiceProtocol.self)
+        newConnection.remoteObjectInterface = NSXPCInterface(with: XPCFileReactorServiceEventingProtocol.self)
         
-        let exportedObject = XPCFileReactorService()
+        let exportedObject = XPCFileReactorService(connection: newConnection)
         newConnection.exportedObject = exportedObject
         newConnection.resume()
         

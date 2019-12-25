@@ -18,6 +18,8 @@
 		933754A523B3FDED004DF598 /* FileProcessingUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */; };
 		933754A723B400FB004DF598 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A623B400FB004DF598 /* Result+Extensions.swift */; };
 		933754A923B4010E004DF598 /* FunctionalComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A823B4010E004DF598 /* FunctionalComposition.swift */; };
+		933754AB23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */; };
+		933754AC23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */; };
 		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
 		933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620423B2270D009DFA61 /* ReactorViewModel.swift */; };
 		93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */; };
@@ -79,6 +81,7 @@
 		933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProcessingUserResult.swift; sourceTree = "<group>"; };
 		933754A623B400FB004DF598 /* Result+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		933754A823B4010E004DF598 /* FunctionalComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionalComposition.swift; sourceTree = "<group>"; };
+		933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCFileReactorServiceEventingProtocol.swift; sourceTree = "<group>"; };
 		933B620123B15884009DFA61 /* FileListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListAdapter.swift; sourceTree = "<group>"; };
 		933B620423B2270D009DFA61 /* ReactorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorViewModel.swift; sourceTree = "<group>"; };
 		93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				93A252CE23B3A4930000072E /* XPCFileReactorServiceProtocol.swift */,
+				933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -391,6 +395,7 @@
 				93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */,
 				93A252D623B3AABB0000072E /* ProgressTracker.swift in Sources */,
 				931AC49E23B3C0E500FFD8F4 /* XPCFileReactorServiceProtocol.swift in Sources */,
+				933754AB23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */,
 				93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */,
 				933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */,
 				932199EA23AE9D8F0057F779 /* ReactorViewController.swift in Sources */,
@@ -417,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933754AC23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */,
 				93A252DB23B3BC060000072E /* ServiceDelegate.swift in Sources */,
 				93A252D123B3A8350000072E /* XPCFileReactorService.swift in Sources */,
 				933754A123B3F917004DF598 /* RemoveFileOperation.swift in Sources */,

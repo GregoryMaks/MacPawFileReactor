@@ -29,51 +29,71 @@ class ReactorViewController: NSViewController {
         tableView.dataSource = tableViewAdapter
         tableView.delegate = tableViewAdapter
         
+        progressIndicator.minValue = 0
+        progressIndicator.maxValue = 1
+        
         // TODO: maybe move out to appCoordinator?
         let fileReactorService = FileReactorService()
         bind(viewModel: ReactorViewModel(fileReactorService: fileReactorService))
     }
-
-//    override var representedObject: Any? {
-//        didSet {
-//        }
-//    }
     
     public func bind(viewModel: ReactorViewModel) {
         self.viewModel = viewModel
         
         viewModel.availableOperationsDidChange = { [weak self] operations in
-            guard let `self` = self else { return }
-            self.operationPopupButton.removeAllItems()
-            self.operationPopupButton.addItems(withTitles: operations.map { $0.description })
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.operationPopupButton.removeAllItems()
+                self.operationPopupButton.addItems(withTitles: operations.map { $0.description })
+            }
         }
         
         viewModel.operationDidChange = { [weak self] operation in
-            guard let `self` = self else { return }
-            self.performOperationButton.title = operation.confirmButtonText
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.performOperationButton.title = operation.confirmButtonText
+            }
         }
         
         viewModel.filesDidChange = { [weak self] files in
-            guard let `self` = self else { return }
-            self.tableViewAdapter.update(viewModels: files)
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.tableViewAdapter.update(viewModels: files)
+            }
         }
         
         viewModel.processingStatusDidChange = { [weak self] status in
-            guard let `self` = self else { return }
-            let hideProgressElements = (status == .idle)
-            self.progressIndicator.isHidden = hideProgressElements
-            self.progressLabel.isHidden = hideProgressElements
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                let controlsEnabled = (status == .idle)
+                
+                self.operationPopupButton.isEnabled = controlsEnabled
+                self.performOperationButton.isEnabled = controlsEnabled
+            }
         }
         
         viewModel.processingProgressDidChange = { [weak self] progress in
-            guard let `self` = self else { return }
-            self.progressIndicator.doubleValue = progress
-            self.progressLabel.stringValue = String(format: "%.0f litres of grog left... ", (1.0 - progress) * 100)
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.progressIndicator.doubleValue = progress
+                if (progress == 0) {
+                    self.progressLabel.stringValue = "Hold ya paddles, lads"
+                }
+                else if (progress == 1) {
+                    self.progressLabel.stringValue = "A fifteen men on a dead man's chest, yohoho and no rum left"
+                }
+                else {
+                    self.progressLabel.stringValue = String(format: "%.0f bottles of rum left... ", (1.0 - progress) * 100)
+                }
+                
+            }
         }
         
         viewModel.userResultShouldShow = { [weak self] userResult in
-            guard let `self` = self else { return }
-            self.show(userMessage: userResult.message, withDescription: userResult.informativeDescription)
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.show(userMessage: userResult.message, withDescription: userResult.informativeDescription)
+            }
         }
         
         viewModel.initializeBindings()
@@ -82,10 +102,12 @@ class ReactorViewController: NSViewController {
     // MARK: - Actions
     
     @IBAction func openDocument(_ sender: Any) {
+        guard self.viewModel.processingStatus == .idle else { return }
         openFileSelectionPanel()
     }
     
     @IBAction func performOperation(_ sender: NSButton) {
+        guard self.viewModel.processingStatus == .idle else { return }
         viewModel.performCurrentOperation()
     }
     
