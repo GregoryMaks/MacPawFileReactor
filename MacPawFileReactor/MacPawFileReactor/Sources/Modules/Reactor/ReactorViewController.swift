@@ -30,7 +30,8 @@ class ReactorViewController: NSViewController {
         tableView.delegate = tableViewAdapter
         
         // TODO: maybe move out to appCoordinator?
-        bind(viewModel: ReactorViewModel())
+        let fileReactorService = FileReactorService()
+        bind(viewModel: ReactorViewModel(fileReactorService: fileReactorService))
     }
 
 //    override var representedObject: Any? {

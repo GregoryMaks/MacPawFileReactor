@@ -10,6 +10,8 @@ import Foundation
 
 class ReactorViewModel {
     
+    let fileReactorService: FileReactorServiceProtocol
+    
     var files = [URL]()
     
     var availableOperations = Operation.allCases
@@ -22,6 +24,10 @@ class ReactorViewModel {
     public var operationDidChange: ((Operation) -> Void)?
     public var filesDidChange: (([FileViewModel]) -> Void)?
 
+    public init(fileReactorService: FileReactorServiceProtocol) {
+        self.fileReactorService = fileReactorService
+    }
+    
 }
 
 // MARK: - Methods
@@ -46,7 +52,18 @@ extension ReactorViewModel {
     }
     
     public func performCurrentOperation() {
-        // TODO
+        switch currentOperation {
+        case .remove:
+            _ = fileReactorService.removeFiles(atURLs: files) { result in
+                print("Operation result: \(result)")
+            }
+        case .duplicate:
+            // TODO
+            break
+        case .calculateHashSum:
+            // TODO
+            break
+        }
     }
     
 }

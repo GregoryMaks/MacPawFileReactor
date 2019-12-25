@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931AC49E23B3C0E500FFD8F4 /* XPCFileReactorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252CE23B3A4930000072E /* XPCFileReactorServiceProtocol.swift */; };
 		932199E823AE9D8F0057F779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932199E723AE9D8F0057F779 /* AppDelegate.swift */; };
 		932199EA23AE9D8F0057F779 /* ReactorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932199E923AE9D8F0057F779 /* ReactorViewController.swift */; };
 		932199EC23AE9D910057F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932199EB23AE9D910057F779 /* Assets.xcassets */; };
@@ -15,9 +16,13 @@
 		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
 		933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620423B2270D009DFA61 /* ReactorViewModel.swift */; };
 		93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */; };
-		93A252C223B3A1EF0000072E /* MacPawFileReactorXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */; };
-		93A252C423B3A1EF0000072E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A252C323B3A1EF0000072E /* main.m */; };
 		93A252C823B3A1EF0000072E /* MacPawFileReactorXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		93A252CF23B3A4930000072E /* XPCFileReactorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252CE23B3A4930000072E /* XPCFileReactorServiceProtocol.swift */; };
+		93A252D123B3A8350000072E /* XPCFileReactorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252D023B3A8350000072E /* XPCFileReactorService.swift */; };
+		93A252D423B3A8F20000072E /* FileReactorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252D323B3A8F20000072E /* FileReactorService.swift */; };
+		93A252D623B3AABB0000072E /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252D523B3AABB0000072E /* ProgressTracker.swift */; };
+		93A252D923B3BADE0000072E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252D823B3BADE0000072E /* main.swift */; };
+		93A252DB23B3BC060000072E /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A252DA23B3BC060000072E /* ServiceDelegate.swift */; };
 		93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0523B13CBA0062AF61 /* Operation.swift */; };
 		93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */; };
 /* End PBXBuildFile section */
@@ -68,11 +73,13 @@
 		933B620423B2270D009DFA61 /* ReactorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorViewModel.swift; sourceTree = "<group>"; };
 		93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
 		93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = MacPawFileReactorXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A252BF23B3A1EF0000072E /* MacPawFileReactorXPCServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacPawFileReactorXPCServiceProtocol.h; sourceTree = "<group>"; };
-		93A252C023B3A1EF0000072E /* MacPawFileReactorXPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacPawFileReactorXPCService.h; sourceTree = "<group>"; };
-		93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacPawFileReactorXPCService.m; sourceTree = "<group>"; };
-		93A252C323B3A1EF0000072E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93A252C523B3A1EF0000072E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A252CE23B3A4930000072E /* XPCFileReactorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCFileReactorServiceProtocol.swift; sourceTree = "<group>"; };
+		93A252D023B3A8350000072E /* XPCFileReactorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCFileReactorService.swift; sourceTree = "<group>"; };
+		93A252D323B3A8F20000072E /* FileReactorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReactorService.swift; sourceTree = "<group>"; };
+		93A252D523B3AABB0000072E /* ProgressTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTracker.swift; sourceTree = "<group>"; };
+		93A252D823B3BADE0000072E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		93A252DA23B3BC060000072E /* ServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
 		93F6EF0523B13CBA0062AF61 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+ViewExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,9 +109,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931AC49D23B3C0AE00FFD8F4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				93A252CE23B3A4930000072E /* XPCFileReactorServiceProtocol.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		932199DB23AE9D8F0057F779 = {
 			isa = PBXGroup;
 			children = (
+				931AC49D23B3C0AE00FFD8F4 /* Shared */,
 				932199E623AE9D8F0057F779 /* MacPawFileReactor */,
 				932199F923AE9D910057F779 /* MacPawFileReactorTests */,
 				93A252BE23B3A1EF0000072E /* MacPawFileReactorXPCService */,
@@ -125,12 +141,8 @@
 		932199E623AE9D8F0057F779 /* MacPawFileReactor */ = {
 			isa = PBXGroup;
 			children = (
-				93A252CD23B3A2670000072E /* Resources */,
 				93F6EF0723B13DE10062AF61 /* Sources */,
-				932199EB23AE9D910057F779 /* Assets.xcassets */,
-				932199ED23AE9D910057F779 /* Main.storyboard */,
-				932199F023AE9D910057F779 /* Info.plist */,
-				932199F123AE9D910057F779 /* MacPawFileReactor.entitlements */,
+				93A252CD23B3A2670000072E /* Resources */,
 			);
 			path = MacPawFileReactor;
 			sourceTree = "<group>";
@@ -144,13 +156,13 @@
 			path = MacPawFileReactorTests;
 			sourceTree = "<group>";
 		};
-		93219A0523B123AE0057F779 /* UI */ = {
+		93219A0523B123AE0057F779 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				933B620323B226FC009DFA61 /* Reactor */,
 				93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */,
 			);
-			path = UI;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		933B620323B226FC009DFA61 /* Reactor */ = {
@@ -167,10 +179,9 @@
 		93A252BE23B3A1EF0000072E /* MacPawFileReactorXPCService */ = {
 			isa = PBXGroup;
 			children = (
-				93A252BF23B3A1EF0000072E /* MacPawFileReactorXPCServiceProtocol.h */,
-				93A252C023B3A1EF0000072E /* MacPawFileReactorXPCService.h */,
-				93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */,
-				93A252C323B3A1EF0000072E /* main.m */,
+				93A252D823B3BADE0000072E /* main.swift */,
+				93A252DA23B3BC060000072E /* ServiceDelegate.swift */,
+				93A252DC23B3BCB80000072E /* FileReactorService */,
 				93A252C523B3A1EF0000072E /* Info.plist */,
 			);
 			path = MacPawFileReactorXPCService;
@@ -179,26 +190,56 @@
 		93A252CD23B3A2670000072E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				932199EB23AE9D910057F779 /* Assets.xcassets */,
+				932199ED23AE9D910057F779 /* Main.storyboard */,
+				932199F023AE9D910057F779 /* Info.plist */,
+				932199F123AE9D910057F779 /* MacPawFileReactor.entitlements */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		93A252D223B3A8AC0000072E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				93A252D323B3A8F20000072E /* FileReactorService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		93A252D723B3B0F60000072E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				93A252D523B3AABB0000072E /* ProgressTracker.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		93A252DC23B3BCB80000072E /* FileReactorService */ = {
+			isa = PBXGroup;
+			children = (
+				93A252D023B3A8350000072E /* XPCFileReactorService.swift */,
+			);
+			path = FileReactorService;
 			sourceTree = "<group>";
 		};
 		93F6EF0723B13DE10062AF61 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				93F6EF0823B13DF50062AF61 /* Model */,
-				93219A0523B123AE0057F779 /* UI */,
+				93219A0523B123AE0057F779 /* Modules */,
+				93F6EF0823B13DF50062AF61 /* Models */,
+				93A252D223B3A8AC0000072E /* Services */,
+				93A252D723B3B0F60000072E /* Helpers */,
 				932199E723AE9D8F0057F779 /* AppDelegate.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		93F6EF0823B13DF50062AF61 /* Model */ = {
+		93F6EF0823B13DF50062AF61 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				93F6EF0523B13CBA0062AF61 /* Operation.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +318,7 @@
 					};
 					93A252BC23B3A1EF0000072E = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -332,9 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */,
+				93A252D623B3AABB0000072E /* ProgressTracker.swift in Sources */,
+				931AC49E23B3C0E500FFD8F4 /* XPCFileReactorServiceProtocol.swift in Sources */,
 				93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */,
 				933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */,
 				932199EA23AE9D8F0057F779 /* ReactorViewController.swift in Sources */,
+				93A252D423B3A8F20000072E /* FileReactorService.swift in Sources */,
 				932199E823AE9D8F0057F779 /* AppDelegate.swift in Sources */,
 				93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */,
 				933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */,
@@ -353,8 +398,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93A252C423B3A1EF0000072E /* main.m in Sources */,
-				93A252C223B3A1EF0000072E /* MacPawFileReactorXPCService.m in Sources */,
+				93A252DB23B3BC060000072E /* ServiceDelegate.swift in Sources */,
+				93A252D123B3A8350000072E /* XPCFileReactorService.swift in Sources */,
+				93A252CF23B3A4930000072E /* XPCFileReactorServiceProtocol.swift in Sources */,
+				93A252D923B3BADE0000072E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,13 +548,14 @@
 		93219A0023AE9D910057F779 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MacPawFileReactor/MacPawFileReactor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MacPawFileReactor/Resources/MacPawFileReactor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8BV4H23WZY;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = MacPawFileReactor/Info.plist;
+				INFOPLIST_FILE = MacPawFileReactor/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -521,13 +569,14 @@
 		93219A0123AE9D910057F779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MacPawFileReactor/MacPawFileReactor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MacPawFileReactor/Resources/MacPawFileReactor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8BV4H23WZY;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = MacPawFileReactor/Info.plist;
+				INFOPLIST_FILE = MacPawFileReactor/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -585,28 +634,43 @@
 		93A252CA23B3A1EF0000072E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8BV4H23WZY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MacPawFileReactorXPCService/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCService;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCFileReactorService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		93A252CB23B3A1EF0000072E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8BV4H23WZY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MacPawFileReactorXPCService/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCService;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCFileReactorService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
