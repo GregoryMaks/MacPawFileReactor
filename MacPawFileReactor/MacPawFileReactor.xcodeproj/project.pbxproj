@@ -15,6 +15,9 @@
 		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
 		933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620423B2270D009DFA61 /* ReactorViewModel.swift */; };
 		93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */; };
+		93A252C223B3A1EF0000072E /* MacPawFileReactorXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */; };
+		93A252C423B3A1EF0000072E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A252C323B3A1EF0000072E /* main.m */; };
+		93A252C823B3A1EF0000072E /* MacPawFileReactorXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0523B13CBA0062AF61 /* Operation.swift */; };
 		93F6EF0A23B13EE00062AF61 /* Operation+ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +30,28 @@
 			remoteGlobalIDString = 932199E323AE9D8F0057F779;
 			remoteInfo = MacPawFileReactor;
 		};
+		93A252C623B3A1EF0000072E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 932199DC23AE9D8F0057F779 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93A252BC23B3A1EF0000072E;
+			remoteInfo = MacPawFileReactorXPCService;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		93A252C923B3A1EF0000072E /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				93A252C823B3A1EF0000072E /* MacPawFileReactorXPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		932199E423AE9D8F0057F779 /* MacPawFileReactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPawFileReactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +67,12 @@
 		933B620123B15884009DFA61 /* FileListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListAdapter.swift; sourceTree = "<group>"; };
 		933B620423B2270D009DFA61 /* ReactorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorViewModel.swift; sourceTree = "<group>"; };
 		93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
+		93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = MacPawFileReactorXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A252BF23B3A1EF0000072E /* MacPawFileReactorXPCServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacPawFileReactorXPCServiceProtocol.h; sourceTree = "<group>"; };
+		93A252C023B3A1EF0000072E /* MacPawFileReactorXPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacPawFileReactorXPCService.h; sourceTree = "<group>"; };
+		93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacPawFileReactorXPCService.m; sourceTree = "<group>"; };
+		93A252C323B3A1EF0000072E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		93A252C523B3A1EF0000072E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93F6EF0523B13CBA0062AF61 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+ViewExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +92,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93A252BA23B3A1EF0000072E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -70,6 +107,7 @@
 			children = (
 				932199E623AE9D8F0057F779 /* MacPawFileReactor */,
 				932199F923AE9D910057F779 /* MacPawFileReactorTests */,
+				93A252BE23B3A1EF0000072E /* MacPawFileReactorXPCService */,
 				932199E523AE9D8F0057F779 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +117,7 @@
 			children = (
 				932199E423AE9D8F0057F779 /* MacPawFileReactor.app */,
 				932199F623AE9D910057F779 /* MacPawFileReactorTests.xctest */,
+				93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +125,7 @@
 		932199E623AE9D8F0057F779 /* MacPawFileReactor */ = {
 			isa = PBXGroup;
 			children = (
+				93A252CD23B3A2670000072E /* Resources */,
 				93F6EF0723B13DE10062AF61 /* Sources */,
 				932199EB23AE9D910057F779 /* Assets.xcassets */,
 				932199ED23AE9D910057F779 /* Main.storyboard */,
@@ -124,6 +164,25 @@
 			path = Reactor;
 			sourceTree = "<group>";
 		};
+		93A252BE23B3A1EF0000072E /* MacPawFileReactorXPCService */ = {
+			isa = PBXGroup;
+			children = (
+				93A252BF23B3A1EF0000072E /* MacPawFileReactorXPCServiceProtocol.h */,
+				93A252C023B3A1EF0000072E /* MacPawFileReactorXPCService.h */,
+				93A252C123B3A1EF0000072E /* MacPawFileReactorXPCService.m */,
+				93A252C323B3A1EF0000072E /* main.m */,
+				93A252C523B3A1EF0000072E /* Info.plist */,
+			);
+			path = MacPawFileReactorXPCService;
+			sourceTree = "<group>";
+		};
+		93A252CD23B3A2670000072E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		93F6EF0723B13DE10062AF61 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,10 +211,12 @@
 				932199E023AE9D8F0057F779 /* Sources */,
 				932199E123AE9D8F0057F779 /* Frameworks */,
 				932199E223AE9D8F0057F779 /* Resources */,
+				93A252C923B3A1EF0000072E /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				93A252C723B3A1EF0000072E /* PBXTargetDependency */,
 			);
 			name = MacPawFileReactor;
 			productName = MacPawFileReactor;
@@ -180,6 +241,23 @@
 			productReference = 932199F623AE9D910057F779 /* MacPawFileReactorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		93A252BC23B3A1EF0000072E /* MacPawFileReactorXPCService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93A252CC23B3A1EF0000072E /* Build configuration list for PBXNativeTarget "MacPawFileReactorXPCService" */;
+			buildPhases = (
+				93A252B923B3A1EF0000072E /* Sources */,
+				93A252BA23B3A1EF0000072E /* Frameworks */,
+				93A252BB23B3A1EF0000072E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacPawFileReactorXPCService;
+			productName = MacPawFileReactorXPCService;
+			productReference = 93A252BD23B3A1EF0000072E /* MacPawFileReactorXPCService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +274,9 @@
 					932199F523AE9D910057F779 = {
 						CreatedOnToolsVersion = 11.2.1;
 						TestTargetID = 932199E323AE9D8F0057F779;
+					};
+					93A252BC23B3A1EF0000072E = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -214,6 +295,7 @@
 			targets = (
 				932199E323AE9D8F0057F779 /* MacPawFileReactor */,
 				932199F523AE9D910057F779 /* MacPawFileReactorTests */,
+				93A252BC23B3A1EF0000072E /* MacPawFileReactorXPCService */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +311,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		932199F423AE9D910057F779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A252BB23B3A1EF0000072E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,6 +349,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93A252B923B3A1EF0000072E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93A252C423B3A1EF0000072E /* main.m in Sources */,
+				93A252C223B3A1EF0000072E /* MacPawFileReactorXPCService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -267,6 +365,11 @@
 			isa = PBXTargetDependency;
 			target = 932199E323AE9D8F0057F779 /* MacPawFileReactor */;
 			targetProxy = 932199F723AE9D910057F779 /* PBXContainerItemProxy */;
+		};
+		93A252C723B3A1EF0000072E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93A252BC23B3A1EF0000072E /* MacPawFileReactorXPCService */;
+			targetProxy = 93A252C623B3A1EF0000072E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -479,6 +582,34 @@
 			};
 			name = Release;
 		};
+		93A252CA23B3A1EF0000072E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8BV4H23WZY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = MacPawFileReactorXPCService/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		93A252CB23B3A1EF0000072E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8BV4H23WZY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = MacPawFileReactorXPCService/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gregorymaks.MacPawFileReactor.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -505,6 +636,15 @@
 			buildConfigurations = (
 				93219A0323AE9D910057F779 /* Debug */,
 				93219A0423AE9D910057F779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93A252CC23B3A1EF0000072E /* Build configuration list for PBXNativeTarget "MacPawFileReactorXPCService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A252CA23B3A1EF0000072E /* Debug */,
+				93A252CB23B3A1EF0000072E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
