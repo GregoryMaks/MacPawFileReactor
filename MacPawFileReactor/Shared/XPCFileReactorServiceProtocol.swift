@@ -12,8 +12,8 @@ public let XPCFileReactorServiceName = "com.gregorymaks.MacPawFileReactor.XPCFil
 
 @objc(FileReactorServiceProtocol) protocol XPCFileReactorServiceProtocol {
     
-    func removeFiles(atURLs: [URL], withReply reply: @escaping ([Bool]) -> Void)
-    func duplicateFiles(atURLs: [URL], withReply reply: @escaping ([Bool]) -> Void)
-    func countHashSumOfFiles(atURLs: [URL], withReply reply: @escaping () -> Void)
+    func removeFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void)
+    func duplicateFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void)
+    func countHashSumOfFiles(atPaths paths: [String], withReply reply: @escaping () -> Void)
     
 }

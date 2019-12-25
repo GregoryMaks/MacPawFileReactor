@@ -12,6 +12,13 @@ class ProgressTracker {
     
     typealias ProgressHandler = (_ fractionCompleted: Double) -> Void
     
+    private var syncQueue: DispatchQueue = DispatchQueue(
+        label: "com.gregorymaks.MacPawFileReactor.ProgressTracker.syncQueue",
+        qos: DispatchQoS.default,
+        attributes: [],
+        autoreleaseFrequency: .workItem,
+        target: nil)
+    
     private(set) var totalOperationCount: UInt = 0
     private(set) var operationsCompleted: UInt = 0
     
@@ -22,13 +29,17 @@ class ProgressTracker {
     }
     
     public func incrementCompletedOperations(by increment: UInt) {
-        operationsCompleted = min(operationsCompleted + increment, totalOperationCount)
-        notifyProgressChanged()
+        syncQueue.async {
+            self.operationsCompleted = min(self.operationsCompleted + increment, self.totalOperationCount)
+            self.notifyProgressChanged()
+        }
     }
     
     public func markAsFullyCompleted() {
-        operationsCompleted = totalOperationCount
-        notifyProgressChanged()
+        syncQueue.async {
+            self.operationsCompleted = self.totalOperationCount
+            self.notifyProgressChanged()
+        }
     }
     
 }

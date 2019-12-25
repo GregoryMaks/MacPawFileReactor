@@ -13,6 +13,11 @@
 		932199EC23AE9D910057F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932199EB23AE9D910057F779 /* Assets.xcassets */; };
 		932199EF23AE9D910057F779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932199ED23AE9D910057F779 /* Main.storyboard */; };
 		932199FB23AE9D910057F779 /* MacPawFileReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932199FA23AE9D910057F779 /* MacPawFileReactorTests.swift */; };
+		933754A123B3F917004DF598 /* RemoveFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A023B3F917004DF598 /* RemoveFileOperation.swift */; };
+		933754A323B3FA4A004DF598 /* FileProcessingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A223B3FA4A004DF598 /* FileProcessingStatus.swift */; };
+		933754A523B3FDED004DF598 /* FileProcessingUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */; };
+		933754A723B400FB004DF598 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A623B400FB004DF598 /* Result+Extensions.swift */; };
+		933754A923B4010E004DF598 /* FunctionalComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A823B4010E004DF598 /* FunctionalComposition.swift */; };
 		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
 		933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620423B2270D009DFA61 /* ReactorViewModel.swift */; };
 		93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */; };
@@ -69,6 +74,11 @@
 		932199F623AE9D910057F779 /* MacPawFileReactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPawFileReactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		932199FA23AE9D910057F779 /* MacPawFileReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPawFileReactorTests.swift; sourceTree = "<group>"; };
 		932199FC23AE9D910057F779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		933754A023B3F917004DF598 /* RemoveFileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFileOperation.swift; sourceTree = "<group>"; };
+		933754A223B3FA4A004DF598 /* FileProcessingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProcessingStatus.swift; sourceTree = "<group>"; };
+		933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProcessingUserResult.swift; sourceTree = "<group>"; };
+		933754A623B400FB004DF598 /* Result+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
+		933754A823B4010E004DF598 /* FunctionalComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionalComposition.swift; sourceTree = "<group>"; };
 		933B620123B15884009DFA61 /* FileListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListAdapter.swift; sourceTree = "<group>"; };
 		933B620423B2270D009DFA61 /* ReactorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorViewModel.swift; sourceTree = "<group>"; };
 		93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
@@ -169,9 +179,11 @@
 			isa = PBXGroup;
 			children = (
 				933B620123B15884009DFA61 /* FileListAdapter.swift */,
+				93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */,
+				933754A223B3FA4A004DF598 /* FileProcessingStatus.swift */,
 				932199E923AE9D8F0057F779 /* ReactorViewController.swift */,
 				933B620423B2270D009DFA61 /* ReactorViewModel.swift */,
-				93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */,
+				933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -209,6 +221,8 @@
 		93A252D723B3B0F60000072E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				933754A823B4010E004DF598 /* FunctionalComposition.swift */,
+				933754A623B400FB004DF598 /* Result+Extensions.swift */,
 				93A252D523B3AABB0000072E /* ProgressTracker.swift */,
 			);
 			path = Helpers;
@@ -218,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				93A252D023B3A8350000072E /* XPCFileReactorService.swift */,
+				933754A023B3F917004DF598 /* RemoveFileOperation.swift */,
 			);
 			path = FileReactorService;
 			sourceTree = "<group>";
@@ -381,8 +396,12 @@
 				932199EA23AE9D8F0057F779 /* ReactorViewController.swift in Sources */,
 				93A252D423B3A8F20000072E /* FileReactorService.swift in Sources */,
 				932199E823AE9D8F0057F779 /* AppDelegate.swift in Sources */,
+				933754A523B3FDED004DF598 /* FileProcessingUserResult.swift in Sources */,
 				93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */,
+				933754A323B3FA4A004DF598 /* FileProcessingStatus.swift in Sources */,
+				933754A723B400FB004DF598 /* Result+Extensions.swift in Sources */,
 				933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */,
+				933754A923B4010E004DF598 /* FunctionalComposition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +419,7 @@
 			files = (
 				93A252DB23B3BC060000072E /* ServiceDelegate.swift in Sources */,
 				93A252D123B3A8350000072E /* XPCFileReactorService.swift in Sources */,
+				933754A123B3F917004DF598 /* RemoveFileOperation.swift in Sources */,
 				93A252CF23B3A4930000072E /* XPCFileReactorServiceProtocol.swift in Sources */,
 				93A252D923B3BADE0000072E /* main.swift in Sources */,
 			);

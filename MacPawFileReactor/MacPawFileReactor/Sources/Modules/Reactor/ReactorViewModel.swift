@@ -13,17 +13,29 @@ class ReactorViewModel {
     let fileReactorService: FileReactorServiceProtocol
     
     var files = [URL]()
-    
-    var availableOperations = Operation.allCases
-    var currentOperation = Operation.remove
     var fileViewModels = [FileViewModel]()
+    
+    // TODO: maybe bindings are needed after all
+    var availableOperations = Operation.allCases
+    var currentOperation = Operation.remove {
+        didSet { operationDidChange?(currentOperation) }
+    }
+    var processingStatus = FileProcessingStatus.idle {
+        didSet { processingStatusDidChange?(processingStatus) }
+    }
+    var processingProgress: Double = 0 {
+        didSet { processingProgressDidChange?(processingProgress) }
+    }
     
     // MARK: - Bindings
     
     public var availableOperationsDidChange: (([Operation]) -> Void)?
     public var operationDidChange: ((Operation) -> Void)?
     public var filesDidChange: (([FileViewModel]) -> Void)?
-
+    public var processingStatusDidChange: ((FileProcessingStatus) -> Void)?
+    public var processingProgressDidChange: ((Double) -> Void)?
+    public var userResultShouldShow: ((FileProcessingUserResult) -> Void)?
+    
     public init(fileReactorService: FileReactorServiceProtocol) {
         self.fileReactorService = fileReactorService
     }
@@ -38,6 +50,8 @@ extension ReactorViewModel {
         availableOperationsDidChange?(availableOperations)
         operationDidChange?(currentOperation)
         filesDidChange?(fileViewModels)
+        processingStatusDidChange?(processingStatus)
+        processingProgressDidChange?(processingProgress)
     }
     
     public func appendFiles(byUrls urls: [URL]) {
@@ -48,15 +62,15 @@ extension ReactorViewModel {
     
     public func changeOperation(to operation: Operation) {
         currentOperation = operation
-        operationDidChange?(operation)
     }
     
     public func performCurrentOperation() {
+        processingStatus = .running
+        processingProgress = 0.5
+        
         switch currentOperation {
         case .remove:
-            _ = fileReactorService.removeFiles(atURLs: files) { result in
-                print("Operation result: \(result)")
-            }
+            removeSelectedFiles()
         case .duplicate:
             // TODO
             break
@@ -94,6 +108,38 @@ extension ReactorViewModel {
         }
         
         return "\(String(format: "%.2f", len)) \(sizes[order])"
+    }
+    
+    private func removeSuccessfullyProcessedFiles(usingResults results:[Bool]) {
+        var newFiles = [URL]()
+        for i in 0..<files.count {
+            if results[i] == false {
+                newFiles.append(files[i])
+            }
+        }
+        files = newFiles
+        fileViewModels = files.map { fileViewModel(fromUrl: $0) }
+        filesDidChange?(fileViewModels)
+    }
+    
+    private func removeSelectedFiles() {
+        // TODO: track progress
+        _ = fileReactorService.removeFiles(atURLs: files) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.processingStatus = .idle
+                result.analyze(
+                    ifSuccess: { separateFilesStatus -> Void in
+                        let allSucceed = separateFilesStatus.allSatisfy { $0 }
+                        self.removeSuccessfullyProcessedFiles(usingResults: separateFilesStatus)
+                        self.userResultShouldShow?(allSucceed ? .success : .partialSuccess)
+                    },
+                    ifFailure: { error in
+                        self.userResultShouldShow?(.failure)
+                    }
+                )
+            }
+        }
     }
     
 }

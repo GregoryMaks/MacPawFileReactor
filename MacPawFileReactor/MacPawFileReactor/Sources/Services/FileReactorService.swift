@@ -18,9 +18,9 @@ protocol FileReactorServiceProtocol {
     typealias MultipleFilesCompletionHandler = (Result<[Bool], FileReactorServiceError>) -> Void
     typealias SingleFileCompletionHandler = (Result<Bool, FileReactorServiceError>) -> Void
     
-    func removeFiles(atURLs: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
-    func duplicateFiles(atURLs: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
-    func countHashSumOfFiles(atURLs: [URL], completionHandler: @escaping SingleFileCompletionHandler) -> ProgressTracker
+    func removeFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
+    func duplicateFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
+    func countHashSumOfFiles(atURLs urls: [URL], completionHandler: @escaping SingleFileCompletionHandler) -> ProgressTracker
     
 }
 
@@ -50,7 +50,7 @@ class FileReactorService: FileReactorServiceProtocol {
             completionHandler(.failure(.xpcCommunicationError(xpcError)))
         }) as! XPCFileReactorServiceProtocol
         
-        xpcService.removeFiles(atURLs: urls) { result in
+        xpcService.removeFiles(atPaths: urls.map { $0.path }) { result in
             completionHandler(.success(result))
         }
         

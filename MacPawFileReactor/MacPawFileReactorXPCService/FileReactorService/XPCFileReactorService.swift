@@ -10,17 +10,26 @@ import Foundation
 
 class XPCFileReactorService: XPCFileReactorServiceProtocol {
     
-    public func removeFiles(atURLs: [URL], withReply reply: @escaping ([Bool]) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            reply([])
+    private let operationQueue = OperationQueue()
+    
+    public func removeFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void) {
+        let operations = paths.map(RemoveFileOperation.init)
+        operationQueue.isSuspended = true
+        operationQueue.addOperations(operations, waitUntilFinished: false)
+        
+        let barrier = BlockOperation {
+            reply(operations.map { $0.result })
         }
+        operations.forEach(barrier.addDependency)
+        operationQueue.addOperation(barrier)
+        operationQueue.isSuspended = false
     }
     
-    public func duplicateFiles(atURLs: [URL], withReply reply: @escaping ([Bool]) -> Void) {
+    public func duplicateFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void) {
         // TODO
     }
     
-    public func countHashSumOfFiles(atURLs: [URL], withReply reply: @escaping () -> Void) {
+    public func countHashSumOfFiles(atPaths paths: [String], withReply reply: @escaping () -> Void) {
         // TODO
     }
     

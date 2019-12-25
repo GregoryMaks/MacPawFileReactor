@@ -58,6 +58,24 @@ class ReactorViewController: NSViewController {
             self.tableViewAdapter.update(viewModels: files)
         }
         
+        viewModel.processingStatusDidChange = { [weak self] status in
+            guard let `self` = self else { return }
+            let hideProgressElements = (status == .idle)
+            self.progressIndicator.isHidden = hideProgressElements
+            self.progressLabel.isHidden = hideProgressElements
+        }
+        
+        viewModel.processingProgressDidChange = { [weak self] progress in
+            guard let `self` = self else { return }
+            self.progressIndicator.doubleValue = progress
+            self.progressLabel.stringValue = String(format: "%.0f litres of grog left... ", (1.0 - progress) * 100)
+        }
+        
+        viewModel.userResultShouldShow = { [weak self] userResult in
+            guard let `self` = self else { return }
+            self.show(userMessage: userResult.message, withDescription: userResult.informativeDescription)
+        }
+        
         viewModel.initializeBindings()
     }
     
@@ -94,6 +112,15 @@ extension ReactorViewController {
                 self.viewModel.appendFiles(byUrls: openPanel.urls)
             }
         }
+    }
+    
+    func show(userMessage: String, withDescription description: String) {
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = userMessage
+        alert.informativeText = description
+        alert.addButton(withTitle: "Aye")
+        alert.runModal()
     }
     
 }
