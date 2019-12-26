@@ -32,7 +32,7 @@ class FileReactorViewController: NSViewController {
         progressIndicator.minValue = 0
         progressIndicator.maxValue = 1
         
-        // TODO: maybe move out to appCoordinator?
+        // I don't like it here, should be moved out to AppCoordinator
         let fileReactorService = FileReactorService()
         bind(viewModel: FileReactorViewModel(fileReactorService: fileReactorService))
     }
