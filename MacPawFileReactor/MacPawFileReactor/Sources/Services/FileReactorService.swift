@@ -10,12 +10,12 @@ import Foundation
 
 protocol FileReactorServiceProtocol {
     
-    typealias MultipleFilesCompletionHandler = (Result<[Bool], FileReactorService.ServiceError>) -> Void
-    typealias SingleFileCompletionHandler = (Result<Bool, FileReactorService.ServiceError>) -> Void
+    typealias MultipleFilesBoolCompletionHandler = (Result<[Bool], FileReactorService.ServiceError>) -> Void
+    typealias MultipleFilesDataCompletionHandler = (Result<[Data], FileReactorService.ServiceError>) -> Void
     
-    func removeFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
-    func duplicateFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker
-    func countHashSumOfFiles(atURLs urls: [URL], completionHandler: @escaping SingleFileCompletionHandler) -> ProgressTracker
+    func removeFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesBoolCompletionHandler) -> ProgressTracker
+    func duplicateFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesBoolCompletionHandler) -> ProgressTracker
+    func countHashSumOfFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesDataCompletionHandler) -> ProgressTracker
     
 }
 
@@ -61,7 +61,7 @@ class FileReactorService: FileReactorServiceProtocol {
         fileRectorXPCConnection.invalidate()
     }
     
-    func removeFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker {
+    func removeFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesBoolCompletionHandler) -> ProgressTracker {
         let eventHandler = fileRectorXPCConnection.exportedObject as? ServiceEventHandler
         
         let xpcService = fileRectorXPCConnection.remoteObjectProxyWithErrorHandler({ xpcError in
@@ -77,14 +77,36 @@ class FileReactorService: FileReactorServiceProtocol {
         return eventHandler?.progressTracker ?? ProgressTracker(totalOperationCount: 1)
     }
     
-    func duplicateFiles(atURLs: [URL], completionHandler: @escaping MultipleFilesCompletionHandler) -> ProgressTracker {
-        // TODO
-        return ProgressTracker(totalOperationCount: 0)
+    func duplicateFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesBoolCompletionHandler) -> ProgressTracker {
+        let eventHandler = fileRectorXPCConnection.exportedObject as? ServiceEventHandler
+        
+        let xpcService = fileRectorXPCConnection.remoteObjectProxyWithErrorHandler({ xpcError in
+            completionHandler(.failure(.xpcCommunicationError(xpcError)))
+        }) as! XPCFileReactorServiceProtocol
+        
+        eventHandler?.setNewProgressTracker(with: UInt(urls.count))
+        
+        xpcService.duplicateFiles(atPaths: urls.map { $0.path }) { result in
+            completionHandler(.success(result))
+        }
+        
+        return eventHandler?.progressTracker ?? ProgressTracker(totalOperationCount: 1)
     }
     
-    func countHashSumOfFiles(atURLs: [URL], completionHandler: @escaping SingleFileCompletionHandler) -> ProgressTracker {
-        // TODO
-        return ProgressTracker(totalOperationCount: 0)
+    func countHashSumOfFiles(atURLs urls: [URL], completionHandler: @escaping MultipleFilesDataCompletionHandler) -> ProgressTracker {
+        let eventHandler = fileRectorXPCConnection.exportedObject as? ServiceEventHandler
+        
+        let xpcService = fileRectorXPCConnection.remoteObjectProxyWithErrorHandler({ xpcError in
+            completionHandler(.failure(.xpcCommunicationError(xpcError)))
+        }) as! XPCFileReactorServiceProtocol
+        
+        eventHandler?.setNewProgressTracker(with: UInt(urls.count))
+        
+        xpcService.countHashSumOfFiles(atPaths: urls.map { $0.path }) { result in
+            completionHandler(.success(result))
+        }
+        
+        return eventHandler?.progressTracker ?? ProgressTracker(totalOperationCount: 1)
     }
     
 }

@@ -20,6 +20,10 @@
 		933754A923B4010E004DF598 /* FunctionalComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754A823B4010E004DF598 /* FunctionalComposition.swift */; };
 		933754AB23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */; };
 		933754AC23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */; };
+		933754AE23B4241B004DF598 /* DuplicateFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AD23B4241B004DF598 /* DuplicateFileOperation.swift */; };
+		933754B023B42429004DF598 /* CountHashOfFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754AF23B42429004DF598 /* CountHashOfFileOperation.swift */; };
+		933754B323B42C17004DF598 /* BaseReactorOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754B223B42C17004DF598 /* BaseReactorOperation.swift */; };
+		933754B523B431AC004DF598 /* Data+HashFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933754B423B431AC004DF598 /* Data+HashFormatting.swift */; };
 		933B620223B15884009DFA61 /* FileListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620123B15884009DFA61 /* FileListAdapter.swift */; };
 		933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B620423B2270D009DFA61 /* ReactorViewModel.swift */; };
 		93A1B4AB23B37CD0005B63BC /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */; };
@@ -82,6 +86,10 @@
 		933754A623B400FB004DF598 /* Result+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		933754A823B4010E004DF598 /* FunctionalComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionalComposition.swift; sourceTree = "<group>"; };
 		933754AA23B412B5004DF598 /* XPCFileReactorServiceEventingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCFileReactorServiceEventingProtocol.swift; sourceTree = "<group>"; };
+		933754AD23B4241B004DF598 /* DuplicateFileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateFileOperation.swift; sourceTree = "<group>"; };
+		933754AF23B42429004DF598 /* CountHashOfFileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountHashOfFileOperation.swift; sourceTree = "<group>"; };
+		933754B223B42C17004DF598 /* BaseReactorOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReactorOperation.swift; sourceTree = "<group>"; };
+		933754B423B431AC004DF598 /* Data+HashFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+HashFormatting.swift"; sourceTree = "<group>"; };
 		933B620123B15884009DFA61 /* FileListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListAdapter.swift; sourceTree = "<group>"; };
 		933B620423B2270D009DFA61 /* ReactorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorViewModel.swift; sourceTree = "<group>"; };
 		93A1B4AA23B37CD0005B63BC /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
@@ -173,13 +181,23 @@
 		93219A0523B123AE0057F779 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				933B620323B226FC009DFA61 /* Reactor */,
-				93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */,
+				933B620323B226FC009DFA61 /* FileReactor */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		933B620323B226FC009DFA61 /* Reactor */ = {
+		933754B123B42AF2004DF598 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				933754B223B42C17004DF598 /* BaseReactorOperation.swift */,
+				933754AF23B42429004DF598 /* CountHashOfFileOperation.swift */,
+				933754AD23B4241B004DF598 /* DuplicateFileOperation.swift */,
+				933754A023B3F917004DF598 /* RemoveFileOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		933B620323B226FC009DFA61 /* FileReactor */ = {
 			isa = PBXGroup;
 			children = (
 				933B620123B15884009DFA61 /* FileListAdapter.swift */,
@@ -188,8 +206,9 @@
 				932199E923AE9D8F0057F779 /* ReactorViewController.swift */,
 				933B620423B2270D009DFA61 /* ReactorViewModel.swift */,
 				933754A423B3FDED004DF598 /* FileProcessingUserResult.swift */,
+				93F6EF0923B13EE00062AF61 /* Operation+ViewExtension.swift */,
 			);
-			path = Reactor;
+			path = FileReactor;
 			sourceTree = "<group>";
 		};
 		93A252BE23B3A1EF0000072E /* MacPawFileReactorXPCService */ = {
@@ -228,6 +247,7 @@
 				933754A823B4010E004DF598 /* FunctionalComposition.swift */,
 				933754A623B400FB004DF598 /* Result+Extensions.swift */,
 				93A252D523B3AABB0000072E /* ProgressTracker.swift */,
+				933754B423B431AC004DF598 /* Data+HashFormatting.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -236,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				93A252D023B3A8350000072E /* XPCFileReactorService.swift */,
-				933754A023B3F917004DF598 /* RemoveFileOperation.swift */,
+				933754B123B42AF2004DF598 /* Operations */,
 			);
 			path = FileReactorService;
 			sourceTree = "<group>";
@@ -400,6 +420,7 @@
 				933B620523B2270D009DFA61 /* ReactorViewModel.swift in Sources */,
 				932199EA23AE9D8F0057F779 /* ReactorViewController.swift in Sources */,
 				93A252D423B3A8F20000072E /* FileReactorService.swift in Sources */,
+				933754B523B431AC004DF598 /* Data+HashFormatting.swift in Sources */,
 				932199E823AE9D8F0057F779 /* AppDelegate.swift in Sources */,
 				933754A523B3FDED004DF598 /* FileProcessingUserResult.swift in Sources */,
 				93F6EF0623B13CBA0062AF61 /* Operation.swift in Sources */,
@@ -426,6 +447,9 @@
 				93A252DB23B3BC060000072E /* ServiceDelegate.swift in Sources */,
 				93A252D123B3A8350000072E /* XPCFileReactorService.swift in Sources */,
 				933754A123B3F917004DF598 /* RemoveFileOperation.swift in Sources */,
+				933754B023B42429004DF598 /* CountHashOfFileOperation.swift in Sources */,
+				933754B323B42C17004DF598 /* BaseReactorOperation.swift in Sources */,
+				933754AE23B4241B004DF598 /* DuplicateFileOperation.swift in Sources */,
 				93A252CF23B3A4930000072E /* XPCFileReactorServiceProtocol.swift in Sources */,
 				93A252D923B3BADE0000072E /* main.swift in Sources */,
 			);

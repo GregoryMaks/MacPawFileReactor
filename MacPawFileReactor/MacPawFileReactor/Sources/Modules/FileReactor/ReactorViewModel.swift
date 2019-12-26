@@ -77,11 +77,9 @@ extension ReactorViewModel {
         case .remove:
             removeSelectedFiles()
         case .duplicate:
-            // TODO
-            break
+            duplicateSelectedFiles()
         case .calculateHashSum:
-            // TODO
-            break
+            calculateHashOfSelectedFiles()
         }
     }
     
@@ -136,7 +134,57 @@ extension ReactorViewModel {
                     ifSuccess: { separateFilesStatus -> Void in
                         let allSucceed = separateFilesStatus.allSatisfy { $0 }
                         self.removeSuccessfullyProcessedFiles(usingResults: separateFilesStatus)
-                        self.userResultShouldShow?(allSucceed ? .success : .partialSuccess)
+                        self.userResultShouldShow?(allSucceed ? .success(nil) : .partialSuccess)
+                    },
+                    ifFailure: { error in
+                        self.userResultShouldShow?(.failure)
+                    }
+                )
+            }
+        }
+        
+        progressTracker.progressDidChange = { [weak self] fractionCompleted in
+            self?.processingProgress = fractionCompleted
+        }
+    }
+    
+    private func duplicateSelectedFiles() {
+        let progressTracker = fileReactorService.duplicateFiles(atURLs: files) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.processingStatus = .idle
+                result.analyze(
+                    ifSuccess: { separateFilesStatus -> Void in
+                        let allSucceed = separateFilesStatus.allSatisfy { $0 }
+                        self.removeSuccessfullyProcessedFiles(usingResults: separateFilesStatus)
+                        self.userResultShouldShow?(allSucceed ? .success(nil) : .partialSuccess)
+                    },
+                    ifFailure: { error in
+                        self.userResultShouldShow?(.failure)
+                    }
+                )
+            }
+        }
+        
+        progressTracker.progressDidChange = { [weak self] fractionCompleted in
+            self?.processingProgress = fractionCompleted
+        }
+    }
+    
+    
+    private func calculateHashOfSelectedFiles() {
+        let progressTracker = fileReactorService.countHashSumOfFiles(atURLs: files) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.processingStatus = .idle
+                result.analyze(
+                    ifSuccess: { separateFilesHashData -> Void in
+                        let allSucceed = separateFilesHashData.allSatisfy { $0.count > 0 }
+                        let hashPreview = separateFilesHashData
+                            .filter { $0.count > 0 }
+                            .prefix(10)
+                            .reduce("Showing first 10 hashes max:") { "\($0)\n\($1.hashString)" }
+                        self.userResultShouldShow?(allSucceed ? .success(hashPreview) : .partialSuccess)
                     },
                     ifFailure: { error in
                         self.userResultShouldShow?(.failure)

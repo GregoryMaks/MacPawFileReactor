@@ -8,20 +8,15 @@
 
 import Foundation
 
-class RemoveFileOperation: Operation {
+class RemoveFileOperation: BaseReactorOperation {
     
-    public let path: String
     private (set) var result: Bool = false
-    
-    public init(path: String) {
-        self.path = path
-    }
     
     override func main() {
         do {
             try FileManager.default.removeItem(atPath: path)
-            // Adding some random delay to simulate long running process (file removal is fast)
-            Thread.sleep(forTimeInterval: Double.random(in: 0.0...3.0))
+            addSomeFun()
+            
             result = true
         }
         catch {

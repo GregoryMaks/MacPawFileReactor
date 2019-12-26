@@ -707,17 +707,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ReactorViewController" customModule="MacPawFileReactor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="739" height="485"/>
+                        <rect key="frame" x="0.0" y="0.0" width="739" height="559"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-K1-KRp">
-                                <rect key="frame" x="20" y="124" width="699" height="260"/>
+                                <rect key="frame" x="20" y="124" width="699" height="334"/>
                                 <clipView key="contentView" id="NGE-ik-ZFU">
-                                    <rect key="frame" x="1" y="0.0" width="697" height="259"/>
+                                    <rect key="frame" x="1" y="0.0" width="697" height="333"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sAS-aN-THO" viewBased="YES" id="0rO-oG-K7d">
-                                            <rect key="frame" x="0.0" y="0.0" width="697" height="234"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="697" height="308"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -809,11 +809,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-Xu-RD4">
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-Xu-RD4">
                                 <rect key="frame" x="20" y="19" width="699" height="20"/>
                             </progressIndicator>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-fJ-G86">
-                                <rect key="frame" x="314" y="401" width="113" height="25"/>
+                                <rect key="frame" x="314" y="475" width="113" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="&lt;operation&gt;" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ldy-PQ-IAw" id="FfY-hh-TVb">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -829,7 +829,7 @@
                                     <action selector="updateOperationAction:" target="XfG-lQ-9wD" id="waa-ir-5y0"/>
                                 </connections>
                             </popUpButton>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Mw-Lcb">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Mw-Lcb">
                                 <rect key="frame" x="612" y="37" width="107" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="&lt;progress label&gt;" id="TTR-vS-N3L">
                                     <font key="font" metaFont="system"/>
@@ -838,7 +838,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CM0-Vx-jBI">
-                                <rect key="frame" x="153" y="445" width="434" height="20"/>
+                                <rect key="frame" x="153" y="519" width="434" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Ahoy captain, what shall we do with these files of yours?" id="VyS-8Q-s9X">
                                     <font key="font" metaFont="system" size="17"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -886,7 +886,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204.5" y="762.5"/>
+            <point key="canvasLocation" x="204.5" y="799.5"/>
         </scene>
     </scenes>
 </document>

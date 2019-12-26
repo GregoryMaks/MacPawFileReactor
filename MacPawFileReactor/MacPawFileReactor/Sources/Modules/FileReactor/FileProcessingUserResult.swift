@@ -10,7 +10,7 @@ import Foundation
 
 enum FileProcessingUserResult {
     case noItemsToProcess
-    case success
+    case success(_ customResult: String?)
     case partialSuccess
     case failure
 }
@@ -29,7 +29,7 @@ extension FileProcessingUserResult {
     var informativeDescription: String {
         switch self {
         case .noItemsToProcess: return "Please add some files to process"
-        case .success: return "All files were processed"
+        case .success(let customResult): return customResult ?? "All files were processed"
         case .partialSuccess: return "Some files were not processed correctly"
         case .failure: return "File processing failed"
         }

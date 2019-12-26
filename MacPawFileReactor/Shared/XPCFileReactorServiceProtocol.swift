@@ -14,6 +14,6 @@ public let XPCFileReactorServiceName = "com.gregorymaks.MacPawFileReactor.XPCFil
     
     func removeFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void)
     func duplicateFiles(atPaths paths: [String], withReply reply: @escaping ([Bool]) -> Void)
-    func countHashSumOfFiles(atPaths paths: [String], withReply reply: @escaping () -> Void)
+    func countHashSumOfFiles(atPaths paths: [String], withReply reply: @escaping ([Data]) -> Void)
     
 }
