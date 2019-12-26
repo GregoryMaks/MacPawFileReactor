@@ -1,6 +1,6 @@
 //
 //  Result.swift
-//  RingTask
+//  MacPawFileReactor
 //
 //  Created by Hryhorii Maksiuk on 8/5/17.
 //  Copyright © 2017 Gregory M. All rights reserved.

@@ -33,4 +33,4 @@ Processing large files is not optimized, this can be an issue when copying or ca
 * unit test coverage
 * more XPC error handling (I am afraid what I've done may not be enough)
 * processing of large files should be better
-* some small stuff like drag-n-drop, file removal, adding folders recursively, etc. 
+* some small stuff like drag-n-drop on file list & on icon, file removal, adding folders recursively, etc. 

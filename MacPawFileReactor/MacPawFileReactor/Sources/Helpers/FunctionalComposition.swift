@@ -1,6 +1,6 @@
 //
 //  FunctionalComposition.swift
-//  RingTask
+//  MacPawFileReactor
 //
 //  Created by Hryhorii Maksiuk on 8/6/17.
 //  Copyright © 2017 Gregory M. All rights reserved.
