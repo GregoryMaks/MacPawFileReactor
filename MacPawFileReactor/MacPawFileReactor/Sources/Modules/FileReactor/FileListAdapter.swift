@@ -10,11 +10,11 @@ import Cocoa
 
 class FileListAdapter: NSObject {
     
-    public weak var tableView: NSTableView!
-    var viewModels: [FileViewModel] = []
+    private let NameCellIdentifier = "CellIdentifierName"
+    private let SizeCellIdentifier = "CellIdentifierSize"
     
-    override init() {
-    }
+    weak var tableView: NSTableView!
+    private var viewModels: [FileViewModel] = []
     
 }
 
@@ -22,7 +22,7 @@ class FileListAdapter: NSObject {
 
 extension FileListAdapter {
     
-    public func update(viewModels: [FileViewModel]) {
+    func update(viewModels: [FileViewModel]) {
         self.viewModels = viewModels
         tableView.reloadData()
     }
@@ -42,11 +42,11 @@ extension FileListAdapter: NSTableViewDataSource {
         
         if tableColumn == tableView.tableColumns[0] {
             text = viewModel.filename
-            identifier = "CellIdentifierName"
+            identifier = NameCellIdentifier
         }
         else if tableColumn == tableView.tableColumns[1] {
             text = viewModel.size
-            identifier = "CellIdentifierSize"
+            identifier = SizeCellIdentifier
         }
         
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: identifier), owner: nil)

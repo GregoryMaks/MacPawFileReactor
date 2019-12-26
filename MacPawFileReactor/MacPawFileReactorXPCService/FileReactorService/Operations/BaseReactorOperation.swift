@@ -10,13 +10,13 @@ import Foundation
 
 class BaseReactorOperation: Operation {
     
-    public let path: String
+    let path: String
     
-    public required init(path: String) {
+    required init(path: String) {
         self.path = path
     }
     
-    public func addSomeFun() {
+    func addSomeFun() {
         // Adding some random delay to simulate long running process (for better fun experience)
         Thread.sleep(forTimeInterval: Double.random(in: 0.0...2.0))
     }

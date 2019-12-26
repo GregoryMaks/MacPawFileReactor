@@ -1,0 +1,33 @@
+"file-reactor-empty-progress-label" = "Hold ya paddles, lads";
+"file-reactor-full-progress-label" = "A fifteen men on a dead man's chest, yohoho and no rum left";
+"file-reactor-progress-label-format" = "%.0f bottles of rum left... ";
+
+"ok-button-title" = "Aye";
+
+"file-size-unknown" = "unknown";
+
+"hash-sum-alert-header" = "Showing first 10 hashes max:";
+
+"remove-operation-dropdown-title" = "throw them overboard, lads! (delete)";
+"duplicate-operation-dropdown-title" = "make me twice as much, goddamit! (duplicate)";
+"hashsum-operation-dropdown-title" = "count the doubloons, hearties! (count hash sum)";
+
+"remove-operation-button-title" = "Throw them overboard!";
+"duplicate-operation-button-title" = "Twice as much!";
+"hashsum-operation-button-title" = "Count 'em up!";
+
+"alert-title-no-items-to-process" = "Aye free rum? For us, captain?";
+"alert-title-success" = "Yo ho ho! We did it, captain!";
+"alert-title-partial-success" = "Mixed news from our lad captain. We'll make him a shark bait next time!";
+"alert-title-failure" = "Son of a Biscuit Eater! We failed, captain.";
+
+"alert-informative-no-items-to-process" = "Please add some files to process";
+"alert-informative-success" = "All files were processed";
+"alert-informative-partial-success" = "Some files were not processed correctly";
+"alert-informative-failure" = "File processing failed";
+
+"file-size-bytes" = "bytes";
+"file-size-KB" = "KB";
+"file-size-MB" = "MB";
+"file-size-GB" = "GB";
+"file-size-TB" = "TB";

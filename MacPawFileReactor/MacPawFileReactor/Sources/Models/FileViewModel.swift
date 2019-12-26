@@ -9,8 +9,6 @@
 import Foundation
 
 struct FileViewModel {
-    
     let filename: String
     let size: String
-    
 }

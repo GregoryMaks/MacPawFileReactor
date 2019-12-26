@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ReactorViewController: NSViewController {
+class FileReactorViewController: NSViewController {
 
     let tableViewAdapter = FileListAdapter()
     
@@ -18,7 +18,7 @@ class ReactorViewController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var performOperationButton: NSButton!
     
-    var viewModel: ReactorViewModel!
+    var viewModel: FileReactorViewModel!
     
     // MARK: - Lifecycle
     
@@ -34,10 +34,10 @@ class ReactorViewController: NSViewController {
         
         // TODO: maybe move out to appCoordinator?
         let fileReactorService = FileReactorService()
-        bind(viewModel: ReactorViewModel(fileReactorService: fileReactorService))
+        bind(viewModel: FileReactorViewModel(fileReactorService: fileReactorService))
     }
     
-    public func bind(viewModel: ReactorViewModel) {
+    func bind(viewModel: FileReactorViewModel) {
         self.viewModel = viewModel
         
         viewModel.availableOperationsDidChange = { [weak self] operations in
@@ -77,13 +77,13 @@ class ReactorViewController: NSViewController {
                 guard let `self` = self else { return }
                 self.progressIndicator.doubleValue = progress
                 if (progress == 0) {
-                    self.progressLabel.stringValue = "Hold ya paddles, lads"
+                    self.progressLabel.stringValue = "file-reactor-empty-progress-label".localized
                 }
                 else if (progress == 1) {
-                    self.progressLabel.stringValue = "A fifteen men on a dead man's chest, yohoho and no rum left"
+                    self.progressLabel.stringValue = "file-reactor-full-progress-label".localized
                 }
                 else {
-                    self.progressLabel.stringValue = String(format: "%.0f bottles of rum left... ", (1.0 - progress) * 100)
+                    self.progressLabel.stringValue = String(format: "file-reactor-progress-label-format".localized, (1.0 - progress) * 100)
                 }
                 
             }
@@ -120,7 +120,7 @@ class ReactorViewController: NSViewController {
 
 // MARK: - Private methods
 
-extension ReactorViewController {
+extension FileReactorViewController {
         
     func openFileSelectionPanel() {
         let openPanel = NSOpenPanel()
@@ -141,7 +141,7 @@ extension ReactorViewController {
         alert.alertStyle = .informational
         alert.messageText = userMessage
         alert.informativeText = description
-        alert.addButton(withTitle: "Aye")
+        alert.addButton(withTitle: "ok-button-title".localized)
         alert.runModal()
     }
     

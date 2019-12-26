@@ -22,13 +22,13 @@ class ProgressTracker {
     private(set) var totalOperationCount: UInt = 0
     private(set) var operationsCompleted: UInt = 0
     
-    public var progressDidChange: (ProgressHandler)?
+    var progressDidChange: (ProgressHandler)?
     
-    public init(totalOperationCount: UInt) {
+    init(totalOperationCount: UInt) {
         self.totalOperationCount = totalOperationCount
     }
     
-    public func updateCompletedOperations(to operationsCompleted: UInt) {
+    func updateCompletedOperations(to operationsCompleted: UInt) {
         syncQueue.async {
             let operationsCompleted = max(operationsCompleted, self.operationsCompleted)
             self.operationsCompleted = min(operationsCompleted, self.totalOperationCount)
@@ -36,14 +36,14 @@ class ProgressTracker {
         }
     }
     
-    public func incrementCompletedOperations(by increment: UInt) {
+    func incrementCompletedOperations(by increment: UInt) {
         syncQueue.async {
             self.operationsCompleted = min(self.operationsCompleted + increment, self.totalOperationCount)
             self.notifyProgressChanged()
         }
     }
     
-    public func markAsFullyCompleted() {
+    func markAsFullyCompleted() {
         syncQueue.async {
             self.operationsCompleted = self.totalOperationCount
             self.notifyProgressChanged()
@@ -56,7 +56,7 @@ class ProgressTracker {
 
 extension ProgressTracker {
     
-    func notifyProgressChanged() {
+    private func notifyProgressChanged() {
         let fractionCompleted = Double(operationsCompleted) / Double(totalOperationCount)
         progressDidChange?(fractionCompleted)
     }

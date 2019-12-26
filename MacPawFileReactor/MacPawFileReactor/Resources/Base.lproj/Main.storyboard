@@ -684,7 +684,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="MacPawFileReactor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="File Reactor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -702,22 +702,22 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Reactor View Controller-->
+        <!--File Reactor View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ReactorViewController" customModule="MacPawFileReactor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="FileReactorViewController" customModule="MacPawFileReactor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="739" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="740" height="559"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-K1-KRp">
-                                <rect key="frame" x="20" y="124" width="699" height="334"/>
+                                <rect key="frame" x="20" y="124" width="700" height="334"/>
                                 <clipView key="contentView" id="NGE-ik-ZFU">
-                                    <rect key="frame" x="1" y="0.0" width="697" height="333"/>
+                                    <rect key="frame" x="1" y="0.0" width="698" height="333"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sAS-aN-THO" viewBased="YES" id="0rO-oG-K7d">
-                                            <rect key="frame" x="0.0" y="0.0" width="697" height="308"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="698" height="308"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -805,12 +805,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="sAS-aN-THO">
-                                    <rect key="frame" x="0.0" y="0.0" width="697" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="698" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-Xu-RD4">
-                                <rect key="frame" x="20" y="19" width="699" height="20"/>
+                                <rect key="frame" x="20" y="19" width="700" height="20"/>
                             </progressIndicator>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-fJ-G86">
                                 <rect key="frame" x="314" y="475" width="113" height="25"/>
@@ -830,7 +830,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Mw-Lcb">
-                                <rect key="frame" x="612" y="37" width="107" height="16"/>
+                                <rect key="frame" x="613" y="37" width="107" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="&lt;progress label&gt;" id="TTR-vS-N3L">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -855,6 +855,22 @@
                                     <action selector="performOperation:" target="XfG-lQ-9wD" id="q1S-Jo-0DA"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jyt-AS-Vsm">
+                                <rect key="frame" x="20" y="475" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="UwK-OR-nH4"/>
+                                    <constraint firstAttribute="height" constant="64" id="g4a-Vn-Y5i"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="Cmw-O8-YJ8"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nYI-vL-PwM">
+                                <rect key="frame" x="654" y="475" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="1ev-sK-egE"/>
+                                    <constraint firstAttribute="height" constant="64" id="3ei-eB-B6o"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="ae0-fP-UtU"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="EdB-Xu-RD4" secondAttribute="bottom" constant="20" id="2cj-92-lW4"/>
@@ -863,17 +879,22 @@
                             <constraint firstAttribute="trailing" secondItem="EdB-Xu-RD4" secondAttribute="trailing" constant="20" id="9mB-2G-MEw"/>
                             <constraint firstAttribute="trailing" secondItem="ZCe-K1-KRp" secondAttribute="trailing" constant="20" id="AX1-XB-lNh"/>
                             <constraint firstItem="EdB-Xu-RD4" firstAttribute="top" secondItem="Gqq-Mw-Lcb" secondAttribute="bottom" constant="-1" id="AqS-NQ-WBV"/>
-                            <constraint firstItem="CM0-Vx-jBI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DBK-zy-VwU"/>
                             <constraint firstItem="O7k-0X-00D" firstAttribute="top" secondItem="ZCe-K1-KRp" secondAttribute="bottom" constant="20" id="Dvb-x0-6ih"/>
                             <constraint firstAttribute="trailing" secondItem="Gqq-Mw-Lcb" secondAttribute="trailing" constant="22" id="Fpd-hb-3Lf"/>
+                            <constraint firstItem="CM0-Vx-jBI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jyt-AS-Vsm" secondAttribute="trailing" constant="20" id="HNG-aH-x65"/>
                             <constraint firstItem="EdB-Xu-RD4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="OJ4-ax-vZv"/>
                             <constraint firstItem="O7k-0X-00D" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="RIq-ou-Ara"/>
                             <constraint firstItem="ZCe-K1-KRp" firstAttribute="top" secondItem="2yc-fJ-G86" secondAttribute="bottom" constant="20" id="SJW-2B-tLd"/>
                             <constraint firstItem="ZCe-K1-KRp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ULy-wU-Ki3"/>
+                            <constraint firstItem="Gqq-Mw-Lcb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="W7C-6X-2IQ"/>
+                            <constraint firstAttribute="trailing" secondItem="nYI-vL-PwM" secondAttribute="trailing" constant="22" id="Z3P-b1-XQd"/>
                             <constraint firstItem="CM0-Vx-jBI" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ew6-9t-yzB"/>
+                            <constraint firstItem="nYI-vL-PwM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CM0-Vx-jBI" secondAttribute="trailing" constant="20" id="g2O-nT-MPE"/>
+                            <constraint firstItem="Jyt-AS-Vsm" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="iaZ-Oo-bjZ"/>
+                            <constraint firstItem="nYI-vL-PwM" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="j9v-lc-uMi"/>
+                            <constraint firstItem="Jyt-AS-Vsm" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="tfB-xD-ByG"/>
                             <constraint firstItem="2yc-fJ-G86" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="tr2-pQ-gFE"/>
                             <constraint firstItem="CM0-Vx-jBI" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="xdS-rZ-aHS"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CM0-Vx-jBI" secondAttribute="trailing" constant="20" id="zdK-KG-LZF"/>
                         </constraints>
                     </view>
                     <connections>
@@ -889,4 +910,7 @@
             <point key="canvasLocation" x="204.5" y="799.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIcon" width="128" height="128"/>
+    </resources>
 </document>

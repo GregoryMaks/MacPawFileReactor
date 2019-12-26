@@ -11,17 +11,17 @@ import Foundation
 extension Operation {
     
     var description: String {
-        let texts = [Operation.remove: "throw them overboard, lads! (delete)",
-                     Operation.duplicate: "make me twice as much, goddamit! (duplicate)",
-                     Operation.calculateHashSum: "count the doubloons, hearties! (count hash sum)"]
+        let texts = [Operation.remove: "remove-operation-dropdown-title".localized,
+                     Operation.duplicate: "duplicate-operation-dropdown-title".localized,
+                     Operation.calculateHashSum: "hashsum-operation-dropdown-title".localized]
         
         return texts[self]!
     }
     
     var confirmButtonText: String {
-        let texts = [Operation.remove: "Throw them overboard!",
-                     Operation.duplicate: "Twice as much!",
-                     Operation.calculateHashSum: "Count 'em up!"]
+        let texts = [Operation.remove: "remove-operation-button-title".localized,
+                     Operation.duplicate: "duplicate-operation-button-title".localized,
+                     Operation.calculateHashSum: "hashsum-operation-button-title".localized]
         
         return texts[self]!
     }

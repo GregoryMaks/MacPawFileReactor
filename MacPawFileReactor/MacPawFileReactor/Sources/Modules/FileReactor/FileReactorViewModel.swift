@@ -8,14 +8,13 @@
 
 import Foundation
 
-class ReactorViewModel {
+class FileReactorViewModel {
     
     let fileReactorService: FileReactorServiceProtocol
     
     var files = [URL]()
     var fileViewModels = [FileViewModel]()
     
-    // TODO: maybe bindings are needed after all
     var availableOperations = Operation.allCases
     var currentOperation = Operation.remove {
         didSet { operationDidChange?(currentOperation) }
@@ -29,14 +28,14 @@ class ReactorViewModel {
     
     // MARK: - Bindings
     
-    public var availableOperationsDidChange: (([Operation]) -> Void)?
-    public var operationDidChange: ((Operation) -> Void)?
-    public var filesDidChange: (([FileViewModel]) -> Void)?
-    public var processingStatusDidChange: ((FileProcessingStatus) -> Void)?
-    public var processingProgressDidChange: ((Double) -> Void)?
-    public var userResultShouldShow: ((FileProcessingUserResult) -> Void)?
+    var availableOperationsDidChange: (([Operation]) -> Void)?
+    var operationDidChange: ((Operation) -> Void)?
+    var filesDidChange: (([FileViewModel]) -> Void)?
+    var processingStatusDidChange: ((FileProcessingStatus) -> Void)?
+    var processingProgressDidChange: ((Double) -> Void)?
+    var userResultShouldShow: ((FileProcessingResult) -> Void)?
     
-    public init(fileReactorService: FileReactorServiceProtocol) {
+    init(fileReactorService: FileReactorServiceProtocol) {
         self.fileReactorService = fileReactorService
     }
     
@@ -44,9 +43,9 @@ class ReactorViewModel {
 
 // MARK: - Methods
 
-extension ReactorViewModel {
+extension FileReactorViewModel {
     
-    public func initializeBindings() {
+    func initializeBindings() {
         availableOperationsDidChange?(availableOperations)
         operationDidChange?(currentOperation)
         filesDidChange?(fileViewModels)
@@ -54,17 +53,17 @@ extension ReactorViewModel {
         processingProgressDidChange?(processingProgress)
     }
     
-    public func appendFiles(byUrls urls: [URL]) {
+    func appendFiles(byUrls urls: [URL]) {
         files.append(contentsOf: urls)
         fileViewModels.append(contentsOf: urls.map { fileViewModel(fromUrl: $0) })
         filesDidChange?(fileViewModels)
     }
     
-    public func changeOperation(to operation: Operation) {
+    func changeOperation(to operation: Operation) {
         currentOperation = operation
     }
     
-    public func performCurrentOperation() {
+    func performCurrentOperation() {
         guard files.count > 0 else {
             userResultShouldShow?(.noItemsToProcess)
             return
@@ -87,30 +86,18 @@ extension ReactorViewModel {
 
 // MARK: - Private methods
 
-extension ReactorViewModel {
+extension FileReactorViewModel {
     
     private func fileViewModel(fromUrl url: URL) -> FileViewModel {
         let fileName = url.lastPathComponent
         
-        var sizeString = "unknown"
+        var sizeString = "file-size-unknown".localized
         let attrs = try? FileManager.default.attributesOfItem(atPath: url.path)
         if let fileSize = (attrs?[.size] as? NSNumber)?.uint64Value {
-            sizeString = fileSizeText(fromByteSize: fileSize)
+            sizeString = String.readableFileSize(fromByteSize: fileSize)
         }
         
         return FileViewModel(filename: fileName, size: sizeString)
-    }
-    
-    private func fileSizeText(fromByteSize byteSize: UInt64) -> String {
-        let sizes = [ "bytes", "KB", "MB", "GB", "TB" ];
-        var len = Double(byteSize);
-        var order = 0;
-        while len >= 1024 && order < sizes.count - 1 {
-            order += 1;
-            len = len / 1024.0;
-        }
-        
-        return "\(String(format: "%.2f", len)) \(sizes[order])"
     }
     
     private func removeSuccessfullyProcessedFiles(usingResults results:[Bool]) {
@@ -171,7 +158,6 @@ extension ReactorViewModel {
         }
     }
     
-    
     private func calculateHashOfSelectedFiles() {
         let progressTracker = fileReactorService.countHashSumOfFiles(atURLs: files) { [weak self] result in
             DispatchQueue.main.async {
@@ -183,7 +169,7 @@ extension ReactorViewModel {
                         let hashPreview = separateFilesHashData
                             .filter { $0.count > 0 }
                             .prefix(10)
-                            .reduce("Showing first 10 hashes max:") { "\($0)\n\($1.hashString)" }
+                            .reduce("hash-sum-alert-header".localized) { "\($0)\n\($1.hashString)" }
                         self.userResultShouldShow?(allSucceed ? .success(hashPreview) : .partialSuccess)
                     },
                     ifFailure: { error in

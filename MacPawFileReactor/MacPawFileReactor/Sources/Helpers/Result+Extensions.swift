@@ -28,7 +28,7 @@ func liftError<Success, Failure>(_ error: Failure) -> Result<Success, Failure> {
 
 extension Result {
 
-    public func mapBoth<NewSuccess, NewFailure>(
+    func mapBoth<NewSuccess, NewFailure>(
         ifSuccess: (Success) -> NewSuccess,
         ifFailure: (Failure) -> NewFailure
     ) -> Result<NewSuccess, NewFailure> {
@@ -39,28 +39,28 @@ extension Result {
         }
     }
 
-    public func flatMapBoth<NewSuccess, NewFailure>(
+    func flatMapBoth<NewSuccess, NewFailure>(
         ifSuccess: (Success) -> Result<NewSuccess, NewFailure>,
         ifFailure: (Failure) -> Result<NewSuccess, NewFailure>
     ) -> Result<NewSuccess, NewFailure> {
         return self.analyze(ifSuccess: ifSuccess, ifFailure: ifFailure)
     }
     
-    public func analyzeSuccess<Result>(_ ifSuccess: (Success) -> Result) -> Result? {
+    func analyzeSuccess<Result>(_ ifSuccess: (Success) -> Result) -> Result? {
         switch self {
         case let .success(value): return ifSuccess(value)
         default: return nil
         }
     }
     
-    public func analyzeFailure<Result>(_ ifFailure: (Failure) -> Result) -> Result? {
+    func analyzeFailure<Result>(_ ifFailure: (Failure) -> Result) -> Result? {
         switch self {
         case let .failure(error): return ifFailure(error)
         default: return nil
         }
     }
     
-    public func analyze<Result>(ifSuccess: (Success) -> Result, ifFailure: (Failure) -> Result) -> Result {
+    func analyze<Result>(ifSuccess: (Success) -> Result, ifFailure: (Failure) -> Result) -> Result {
         switch self {
         case let .success(value): return ifSuccess(value)
         case let .failure(error): return ifFailure(error)
