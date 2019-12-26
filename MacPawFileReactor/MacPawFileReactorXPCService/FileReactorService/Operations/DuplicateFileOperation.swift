@@ -15,13 +15,27 @@ class DuplicateFileOperation: BaseReactorOperation {
     override func main() {
         do {
             let fileURL = URL(fileURLWithPath: path)
-            let copyFilePath = fileURL.deletingPathExtension().path + " copy" + "." + fileURL.pathExtension
             
-            if (!FileManager.default.fileExists(atPath: copyFilePath)) {
-                try FileManager.default.copyItem(atPath: path, toPath: copyFilePath)
+            var copyFileURL = fileURL
+            var copyLimiter = 10
+            
+            while FileManager.default.fileExists(atPath: copyFileURL.path) && copyLimiter > 0 {
+                copyFileURL = copyFileURL
+                    .deletingPathExtension()
+                    .deletingLastPathComponent()
+                    .appendingPathComponent(copyFileURL.deletingPathExtension().lastPathComponent + " copy")
+                    .appendingPathExtension(copyFileURL.pathExtension)
+                copyLimiter -= 1
+            }
+            
+            if !FileManager.default.fileExists(atPath: copyFileURL.path) {
+                try FileManager.default.copyItem(atPath: path, toPath: copyFileURL.path)
+
                 addSomeFun()
-                
                 result = true
+            }
+            else {
+                result = false
             }
         }
         catch {

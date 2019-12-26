@@ -14,11 +14,14 @@ class CountHashOfFileOperation: BaseReactorOperation {
     private (set) var resultHash: Data? = nil
     
     override func main() {
-        if let fileData = FileManager.default.contents(atPath: path) {
+
+        // Using memory mapped file to deal with large files
+        do {
+            let fileData = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             resultHash = sha256(for: fileData)
             addSomeFun()
         }
-        else {
+        catch {
             resultHash = nil
         }
     }
